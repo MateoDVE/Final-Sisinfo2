@@ -1,0 +1,36 @@
+{
+	"name": "BRONZE_PRODUCTOS_CATEGORIAS_sql",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "sql_dw_proyectofinal",
+			"type": "LinkedServiceReference"
+		},
+		"folder": {
+			"name": "BRONZE"
+		},
+		"annotations": [],
+		"type": "AzureSqlTable",
+		"schema": [
+			{
+				"name": "id",
+				"type": "varchar"
+			},
+			{
+				"name": "cat",
+				"type": "varchar"
+			},
+			{
+				"name": "subcat",
+				"type": "varchar"
+			},
+			{
+				"name": "maintenance",
+				"type": "varchar"
+			}
+		],
+		"typeProperties": {
+			"schema": "BRONZE",
+			"table": "PRODUCTOS_CATEGORIAS"
+		}
+	}
+}

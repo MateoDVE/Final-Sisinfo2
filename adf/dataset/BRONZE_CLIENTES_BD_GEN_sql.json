@@ -1,0 +1,32 @@
+{
+	"name": "BRONZE_CLIENTES_BD_GEN_sql",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "sql_dw_proyectofinal",
+			"type": "LinkedServiceReference"
+		},
+		"folder": {
+			"name": "BRONZE"
+		},
+		"annotations": [],
+		"type": "AzureSqlTable",
+		"schema": [
+			{
+				"name": "cid",
+				"type": "varchar"
+			},
+			{
+				"name": "bdate",
+				"type": "varchar"
+			},
+			{
+				"name": "gen",
+				"type": "varchar"
+			}
+		],
+		"typeProperties": {
+			"schema": "BRONZE",
+			"table": "CLIENTES_BD_GEN"
+		}
+	}
+}
