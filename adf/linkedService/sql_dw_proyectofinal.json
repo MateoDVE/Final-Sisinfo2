@@ -1,0 +1,17 @@
+{
+	"name": "sql_dw_proyectofinal",
+	"type": "Microsoft.DataFactory/factories/linkedservices",
+	"properties": {
+		"annotations": [],
+		"type": "AzureSqlDatabase",
+		"typeProperties": {
+			"server": "sql-ucb-sisinfo12682879.database.windows.net",
+			"database": "dw_proyecto-final",
+			"encrypt": "mandatory",
+			"trustServerCertificate": false,
+			"authenticationType": "SQL",
+			"userName": "mateo",
+			"encryptedCredential": "ew0KICAiVmVyc2lvbiI6ICIyMDE3LTExLTMwIiwNCiAgIlByb3RlY3Rpb25Nb2RlIjogIktleSIsDQogICJTZWNyZXRDb250ZW50VHlwZSI6ICJQbGFpbnRleHQiLA0KICAiQ3JlZGVudGlhbElkIjogIkRBVEFGQUNUT1JZQDdGRDU1QUM1LTAxQ0UtNDU3MC04RTM4LTI2NEM4MTVCOTVFNF80MDEwYmNlOS0xYjY4LTQ3YWYtYjI3Yi0wZGVkNDIyM2RmYjAiDQp9"
+		}
+	}
+}
