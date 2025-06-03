@@ -50,9 +50,9 @@
 				"     skipDuplicateMapOutputs: true,",
 				"     errorHandlingOption: 'stopOnFirstError',",
 				"     mapColumn(",
-				"          cid,",
-				"          bdate,",
-				"          gen",
+				"          cid = CID,",
+				"          bdate = BDATE,",
+				"          gen = GEN",
 				"     )) ~> sink1"
 			]
 		}

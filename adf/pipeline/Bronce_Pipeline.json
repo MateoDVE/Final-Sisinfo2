@@ -5,7 +5,14 @@
 			{
 				"name": "Bronze_dfl_Clientes",
 				"type": "ExecuteDataFlow",
-				"dependsOn": [],
+				"dependsOn": [
+					{
+						"activity": "Bronze_dfl_CLIENTES_BD_GEN",
+						"dependencyConditions": [
+							"Succeeded"
+						]
+					}
+				],
 				"policy": {
 					"timeout": "0.12:00:00",
 					"retry": 0,
@@ -31,7 +38,7 @@
 				"type": "ExecuteDataFlow",
 				"dependsOn": [
 					{
-						"activity": "Bronze_dfl_Clientes",
+						"activity": "Data Bronze_dfl_CLIENTES_LOCATION",
 						"dependencyConditions": [
 							"Succeeded"
 						]
@@ -60,14 +67,7 @@
 			{
 				"name": "Data Bronze_dfl_CLIENTES_LOCATION",
 				"type": "ExecuteDataFlow",
-				"dependsOn": [
-					{
-						"activity": "Bronze_dfl_CLIENTES_BD_GEN",
-						"dependencyConditions": [
-							"Succeeded"
-						]
-					}
-				],
+				"dependsOn": [],
 				"policy": {
 					"timeout": "0.12:00:00",
 					"retry": 0,
@@ -93,7 +93,7 @@
 				"type": "ExecuteDataFlow",
 				"dependsOn": [
 					{
-						"activity": "Data Bronze_dfl_CLIENTES_LOCATION",
+						"activity": "Bronze_dfl_Clientes",
 						"dependencyConditions": [
 							"Succeeded"
 						]
