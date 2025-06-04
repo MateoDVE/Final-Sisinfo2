@@ -18,7 +18,7 @@
 			"sinks": [
 				{
 					"dataset": {
-						"referenceName": "Productos",
+						"referenceName": "BRONZE_PRODUCTOS_sql",
 						"type": "DatasetReference"
 					},
 					"name": "sink1"
@@ -45,8 +45,14 @@
 				"          prd_cost as string,",
 				"          prd_line as string",
 				"     ),",
+				"     deletable:false,",
+				"     insertable:true,",
+				"     updateable:false,",
+				"     upsertable:false,",
+				"     format: 'table',",
 				"     skipDuplicateMapInputs: true,",
 				"     skipDuplicateMapOutputs: true,",
+				"     errorHandlingOption: 'stopOnFirstError',",
 				"     mapColumn(",
 				"          prd_id,",
 				"          prd_key,",
