@@ -1,0 +1,28 @@
+{
+	"name": "SILVER_PRODUCTOS_CATEGORIAS",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "sql_dw_proyectofinal",
+			"type": "LinkedServiceReference"
+		},
+		"folder": {
+			"name": "SILVER"
+		},
+		"annotations": [],
+		"type": "AzureSqlTable",
+		"schema": [
+			{
+				"name": "id",
+				"type": "varchar"
+			},
+			{
+				"name": "subcat",
+				"type": "varchar"
+			}
+		],
+		"typeProperties": {
+			"schema": "SILVER",
+			"table": "PRODUCTOS_CATEGORIAS"
+		}
+	}
+}

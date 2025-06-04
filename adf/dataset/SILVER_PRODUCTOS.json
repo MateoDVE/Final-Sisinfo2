@@ -1,0 +1,38 @@
+{
+	"name": "SILVER_PRODUCTOS",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "sql_dw_proyectofinal",
+			"type": "LinkedServiceReference"
+		},
+		"folder": {
+			"name": "SILVER"
+		},
+		"annotations": [],
+		"type": "AzureSqlTable",
+		"schema": [
+			{
+				"name": "prd_id",
+				"type": "int",
+				"precision": 10
+			},
+			{
+				"name": "prd_key",
+				"type": "varchar"
+			},
+			{
+				"name": "prd_nm",
+				"type": "varchar"
+			},
+			{
+				"name": "prd_cost",
+				"type": "int",
+				"precision": 10
+			}
+		],
+		"typeProperties": {
+			"schema": "SILVER",
+			"table": "PRODUCTOS"
+		}
+	}
+}

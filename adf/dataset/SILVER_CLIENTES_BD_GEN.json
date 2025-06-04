@@ -1,0 +1,28 @@
+{
+	"name": "SILVER_CLIENTES_BD_GEN",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "sql_dw_proyectofinal",
+			"type": "LinkedServiceReference"
+		},
+		"folder": {
+			"name": "SILVER"
+		},
+		"annotations": [],
+		"type": "AzureSqlTable",
+		"schema": [
+			{
+				"name": "cid",
+				"type": "varchar"
+			},
+			{
+				"name": "bdate",
+				"type": "date"
+			}
+		],
+		"typeProperties": {
+			"schema": "SILVER",
+			"table": "CLIENTES_BD_GEN"
+		}
+	}
+}

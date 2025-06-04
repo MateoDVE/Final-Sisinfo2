@@ -1,71 +1,9 @@
 {
-	"name": "Bronce_Pipeline",
+	"name": "Silver_Pipeline",
 	"properties": {
 		"activities": [
 			{
-				"name": "Bronze_dfl_Clientes",
-				"type": "ExecuteDataFlow",
-				"dependsOn": [
-					{
-						"activity": "Bronze_dfl_CLIENTES_BD_GEN",
-						"dependencyConditions": [
-							"Succeeded"
-						]
-					}
-				],
-				"policy": {
-					"timeout": "0.12:00:00",
-					"retry": 0,
-					"retryIntervalInSeconds": 30,
-					"secureOutput": false,
-					"secureInput": false
-				},
-				"userProperties": [],
-				"typeProperties": {
-					"dataflow": {
-						"referenceName": "Bronze_dfl_Clientes",
-						"type": "DataFlowReference"
-					},
-					"compute": {
-						"coreCount": 8,
-						"computeType": "General"
-					},
-					"traceLevel": "Fine"
-				}
-			},
-			{
-				"name": "Bronze_dfl_CLIENTES_BD_GEN",
-				"type": "ExecuteDataFlow",
-				"dependsOn": [
-					{
-						"activity": "Bronze_dfl_CLIENTES_LOCATION",
-						"dependencyConditions": [
-							"Succeeded"
-						]
-					}
-				],
-				"policy": {
-					"timeout": "0.12:00:00",
-					"retry": 0,
-					"retryIntervalInSeconds": 30,
-					"secureOutput": false,
-					"secureInput": false
-				},
-				"userProperties": [],
-				"typeProperties": {
-					"dataflow": {
-						"referenceName": "Bronze_dfl_CLIENTES_BD_GEN",
-						"type": "DataFlowReference"
-					},
-					"compute": {
-						"coreCount": 8,
-						"computeType": "General"
-					},
-					"traceLevel": "Fine"
-				}
-			},
-			{
-				"name": "Bronze_dfl_CLIENTES_LOCATION",
+				"name": "Silver_df_CLIENTES",
 				"type": "ExecuteDataFlow",
 				"dependsOn": [],
 				"policy": {
@@ -78,7 +16,7 @@
 				"userProperties": [],
 				"typeProperties": {
 					"dataflow": {
-						"referenceName": "Bronze_dfl_CLIENTES_LOCATION",
+						"referenceName": "Silver_df_CLIENTES",
 						"type": "DataFlowReference"
 					},
 					"compute": {
@@ -89,11 +27,11 @@
 				}
 			},
 			{
-				"name": "Bronze_dfl_PRODUCTOS_CATEGORIAS",
+				"name": "Silver_df_CLIENTES_BD_GEN",
 				"type": "ExecuteDataFlow",
 				"dependsOn": [
 					{
-						"activity": "Bronze_dfl_Clientes",
+						"activity": "Silver_df_CLIENTES",
 						"dependencyConditions": [
 							"Succeeded"
 						]
@@ -109,7 +47,7 @@
 				"userProperties": [],
 				"typeProperties": {
 					"dataflow": {
-						"referenceName": "Bronze_dfl_PRODUCTOS_CATEGORIAS",
+						"referenceName": "Silver_df_CLIENTES_BD_GEN",
 						"type": "DataFlowReference"
 					},
 					"compute": {
@@ -120,11 +58,11 @@
 				}
 			},
 			{
-				"name": "Bronze_dfl_PRODUCTOS",
+				"name": "Silver_df_CLIENTES_LOCATION",
 				"type": "ExecuteDataFlow",
 				"dependsOn": [
 					{
-						"activity": "Bronze_dfl_PRODUCTOS_CATEGORIAS",
+						"activity": "Silver_df_CLIENTES_BD_GEN",
 						"dependencyConditions": [
 							"Succeeded"
 						]
@@ -140,7 +78,7 @@
 				"userProperties": [],
 				"typeProperties": {
 					"dataflow": {
-						"referenceName": "Bronze_dfl_PRODUCTOS",
+						"referenceName": "Silver_df_CLIENTES_LOCATION",
 						"type": "DataFlowReference"
 					},
 					"compute": {
@@ -151,11 +89,11 @@
 				}
 			},
 			{
-				"name": "Bronze_dfl_VENTAS",
+				"name": "Silver_df_PRODUCTOS",
 				"type": "ExecuteDataFlow",
 				"dependsOn": [
 					{
-						"activity": "Bronze_dfl_PRODUCTOS",
+						"activity": "Silver_df_CLIENTES_LOCATION",
 						"dependencyConditions": [
 							"Succeeded"
 						]
@@ -171,7 +109,69 @@
 				"userProperties": [],
 				"typeProperties": {
 					"dataflow": {
-						"referenceName": "Bronze_dfl_VENTAS",
+						"referenceName": "Silver_df_PRODUCTOS",
+						"type": "DataFlowReference"
+					},
+					"compute": {
+						"coreCount": 8,
+						"computeType": "General"
+					},
+					"traceLevel": "Fine"
+				}
+			},
+			{
+				"name": "Silver_df_PRODUCTOS_CATEGORIAS",
+				"type": "ExecuteDataFlow",
+				"dependsOn": [
+					{
+						"activity": "Silver_df_PRODUCTOS",
+						"dependencyConditions": [
+							"Succeeded"
+						]
+					}
+				],
+				"policy": {
+					"timeout": "0.12:00:00",
+					"retry": 0,
+					"retryIntervalInSeconds": 30,
+					"secureOutput": false,
+					"secureInput": false
+				},
+				"userProperties": [],
+				"typeProperties": {
+					"dataflow": {
+						"referenceName": "Silver_df_PRODUCTOS_CATEGORIAS",
+						"type": "DataFlowReference"
+					},
+					"compute": {
+						"coreCount": 8,
+						"computeType": "General"
+					},
+					"traceLevel": "Fine"
+				}
+			},
+			{
+				"name": "Silver_df_VENTAS",
+				"type": "ExecuteDataFlow",
+				"dependsOn": [
+					{
+						"activity": "Silver_df_PRODUCTOS_CATEGORIAS",
+						"dependencyConditions": [
+							"Succeeded"
+						]
+					}
+				],
+				"policy": {
+					"timeout": "0.12:00:00",
+					"retry": 0,
+					"retryIntervalInSeconds": 30,
+					"secureOutput": false,
+					"secureInput": false
+				},
+				"userProperties": [],
+				"typeProperties": {
+					"dataflow": {
+						"referenceName": "Silver_df_VENTAS",
 						"type": "DataFlowReference"
 					},
 					"compute": {
@@ -183,7 +183,7 @@
 			}
 		],
 		"folder": {
-			"name": "BRONZE"
+			"name": "SILVER"
 		},
 		"annotations": []
 	}
