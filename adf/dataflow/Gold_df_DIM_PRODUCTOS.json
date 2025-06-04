@@ -1,5 +1,5 @@
 {
-	"name": "Gold_df_DIM_CLIENTES",
+	"name": "Gold_df_DIM_PRODUCTOS",
 	"properties": {
 		"folder": {
 			"name": "GOLD"
@@ -9,7 +9,7 @@
 			"sources": [
 				{
 					"dataset": {
-						"referenceName": "SILVER_CLIENTES",
+						"referenceName": "SILVER_PRODUCTOS",
 						"type": "DatasetReference"
 					},
 					"name": "source1"
@@ -18,26 +18,31 @@
 			"sinks": [
 				{
 					"dataset": {
-						"referenceName": "GOLD_DIM_CLIENTES",
+						"referenceName": "GOLD_DIM_PRODUCTOS",
 						"type": "DatasetReference"
 					},
 					"name": "sink1"
 				}
 			],
-			"transformations": [],
+			"transformations": [
+				{
+					"name": "filter1"
+				}
+			],
 			"scriptLines": [
 				"source(output(",
-				"          cst_id as integer",
+				"          prd_key as string",
 				"     ),",
 				"     allowSchemaDrift: true,",
 				"     validateSchema: false,",
 				"     isolationLevel: 'READ_UNCOMMITTED',",
-				"     query: 'SELECT DISTINCT cst_id\\nfrom SILVER.CLIENTES',",
+				"     query: 'select  prd_key\\nfrom SILVER.PRODUCTOS',",
 				"     format: 'query') ~> source1",
-				"source1 sink(allowSchemaDrift: true,",
+				"source1 filter(!isNull(prd_key)) ~> filter1",
+				"filter1 sink(allowSchemaDrift: true,",
 				"     validateSchema: false,",
 				"     input(",
-				"          cst_id as integer",
+				"          prd_key as string",
 				"     ),",
 				"     deletable:false,",
 				"     insertable:true,",
@@ -50,7 +55,7 @@
 				"     transactionCommit: 'single',",
 				"     reportSuccessOnError: false,",
 				"     mapColumn(",
-				"          cst_id",
+				"          prd_key",
 				"     )) ~> sink1"
 			]
 		}

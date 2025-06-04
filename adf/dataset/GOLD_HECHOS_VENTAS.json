@@ -1,0 +1,53 @@
+{
+	"name": "GOLD_HECHOS_VENTAS",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "sql_dw_proyectofinal",
+			"type": "LinkedServiceReference"
+		},
+		"folder": {
+			"name": "GOLD"
+		},
+		"annotations": [],
+		"type": "AzureSqlTable",
+		"schema": [
+			{
+				"name": "sls_ord_id",
+				"type": "int",
+				"precision": 10
+			},
+			{
+				"name": "sls_ord_num",
+				"type": "varchar"
+			},
+			{
+				"name": "sls_prd_key",
+				"type": "varchar"
+			},
+			{
+				"name": "sls_cust_id",
+				"type": "int",
+				"precision": 10
+			},
+			{
+				"name": "sls_sales",
+				"type": "int",
+				"precision": 10
+			},
+			{
+				"name": "sls_quantity",
+				"type": "int",
+				"precision": 10
+			},
+			{
+				"name": "sls_price",
+				"type": "int",
+				"precision": 10
+			}
+		],
+		"typeProperties": {
+			"schema": "GOLD",
+			"table": "HECHOS_VENTAS"
+		}
+	}
+}

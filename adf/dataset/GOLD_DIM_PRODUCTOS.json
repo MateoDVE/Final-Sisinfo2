@@ -1,0 +1,24 @@
+{
+	"name": "GOLD_DIM_PRODUCTOS",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "sql_dw_proyectofinal",
+			"type": "LinkedServiceReference"
+		},
+		"folder": {
+			"name": "GOLD"
+		},
+		"annotations": [],
+		"type": "AzureSqlTable",
+		"schema": [
+			{
+				"name": "prd_key",
+				"type": "varchar"
+			}
+		],
+		"typeProperties": {
+			"schema": "GOLD",
+			"table": "DIM_PRODUCTOS"
+		}
+	}
+}

@@ -1,5 +1,5 @@
 {
-	"name": "Gold_df_DIM_CLIENTES",
+	"name": "Gold_df_HECHOS_VENTAS",
 	"properties": {
 		"folder": {
 			"name": "GOLD"
@@ -9,7 +9,7 @@
 			"sources": [
 				{
 					"dataset": {
-						"referenceName": "SILVER_CLIENTES",
+						"referenceName": "SILVER_VENTAS",
 						"type": "DatasetReference"
 					},
 					"name": "source1"
@@ -18,7 +18,7 @@
 			"sinks": [
 				{
 					"dataset": {
-						"referenceName": "GOLD_DIM_CLIENTES",
+						"referenceName": "GOLD_HECHOS_VENTAS",
 						"type": "DatasetReference"
 					},
 					"name": "sink1"
@@ -27,17 +27,27 @@
 			"transformations": [],
 			"scriptLines": [
 				"source(output(",
-				"          cst_id as integer",
+				"          sls_ord_num as string,",
+				"          sls_prd_key as string,",
+				"          sls_cust_id as integer,",
+				"          sls_sales as integer,",
+				"          sls_quantity as integer,",
+				"          sls_price as integer",
 				"     ),",
 				"     allowSchemaDrift: true,",
 				"     validateSchema: false,",
 				"     isolationLevel: 'READ_UNCOMMITTED',",
-				"     query: 'SELECT DISTINCT cst_id\\nfrom SILVER.CLIENTES',",
-				"     format: 'query') ~> source1",
+				"     format: 'table') ~> source1",
 				"source1 sink(allowSchemaDrift: true,",
 				"     validateSchema: false,",
 				"     input(",
-				"          cst_id as integer",
+				"          sls_ord_id as integer,",
+				"          sls_ord_num as string,",
+				"          sls_prd_key as string,",
+				"          sls_cust_id as integer,",
+				"          sls_sales as integer,",
+				"          sls_quantity as integer,",
+				"          sls_price as integer",
 				"     ),",
 				"     deletable:false,",
 				"     insertable:true,",
@@ -50,7 +60,12 @@
 				"     transactionCommit: 'single',",
 				"     reportSuccessOnError: false,",
 				"     mapColumn(",
-				"          cst_id",
+				"          sls_ord_num,",
+				"          sls_prd_key,",
+				"          sls_cust_id,",
+				"          sls_sales,",
+				"          sls_quantity,",
+				"          sls_price",
 				"     )) ~> sink1"
 			]
 		}

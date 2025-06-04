@@ -1,0 +1,103 @@
+{
+	"name": "Gold_Pipeline",
+	"properties": {
+		"activities": [
+			{
+				"name": "Gold_df_DIM_CLIENTES",
+				"type": "ExecuteDataFlow",
+				"dependsOn": [],
+				"policy": {
+					"timeout": "0.12:00:00",
+					"retry": 0,
+					"retryIntervalInSeconds": 30,
+					"secureOutput": false,
+					"secureInput": false
+				},
+				"userProperties": [],
+				"typeProperties": {
+					"dataflow": {
+						"referenceName": "Gold_df_DIM_CLIENTES",
+						"type": "DataFlowReference"
+					},
+					"compute": {
+						"coreCount": 32,
+						"computeType": "MemoryOptimized"
+					},
+					"traceLevel": "Fine",
+					"runConcurrently": false,
+					"continueOnError": true
+				}
+			},
+			{
+				"name": "Gold_df_DIM_PRODUCTOS",
+				"type": "ExecuteDataFlow",
+				"dependsOn": [
+					{
+						"activity": "Gold_df_DIM_CLIENTES",
+						"dependencyConditions": [
+							"Succeeded"
+						]
+					}
+				],
+				"policy": {
+					"timeout": "0.12:00:00",
+					"retry": 0,
+					"retryIntervalInSeconds": 30,
+					"secureOutput": false,
+					"secureInput": false
+				},
+				"userProperties": [],
+				"typeProperties": {
+					"dataflow": {
+						"referenceName": "Gold_df_DIM_PRODUCTOS",
+						"type": "DataFlowReference"
+					},
+					"compute": {
+						"coreCount": 32,
+						"computeType": "MemoryOptimized"
+					},
+					"traceLevel": "Fine",
+					"runConcurrently": true,
+					"continueOnError": true
+				}
+			},
+			{
+				"name": "Gold_df_HECHOS_VENTAS",
+				"type": "ExecuteDataFlow",
+				"dependsOn": [
+					{
+						"activity": "Gold_df_DIM_PRODUCTOS",
+						"dependencyConditions": [
+							"Succeeded"
+						]
+					}
+				],
+				"policy": {
+					"timeout": "0.12:00:00",
+					"retry": 0,
+					"retryIntervalInSeconds": 30,
+					"secureOutput": false,
+					"secureInput": false
+				},
+				"userProperties": [],
+				"typeProperties": {
+					"dataflow": {
+						"referenceName": "Gold_df_HECHOS_VENTAS",
+						"type": "DataFlowReference"
+					},
+					"compute": {
+						"coreCount": 32,
+						"computeType": "MemoryOptimized"
+					},
+					"traceLevel": "Fine",
+					"runConcurrently": true,
+					"continueOnError": true
+				}
+			}
+		],
+		"folder": {
+			"name": "GOLD"
+		},
+		"annotations": []
+	}
+}
