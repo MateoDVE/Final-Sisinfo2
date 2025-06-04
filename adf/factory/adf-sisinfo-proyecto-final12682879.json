@@ -1,9 +1,4 @@
 {
 	"name": "adf-sisinfo-proyecto-final12682879",
-	"location": "brazilsouth",
-	"identity": {
-		"type": "SystemAssigned",
-		"principalId": "5ed1b767-fcaf-4f79-9fb3-bee0d5c22d99",
-		"tenantId": "cc28633f-12b8-46cb-bc15-951dae239b4d"
-	}
+	"location": "brazilsouth"
 }
